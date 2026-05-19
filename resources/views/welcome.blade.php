@@ -105,7 +105,7 @@
         <div class="container">
 
             <a class="navbar-brand d-flex align-items-center" href="#">
-                <img src="{{ asset('logo.png') }}" width="75" class="me-2">
+                <img src="logo.png" width="75" class="me-2">
                 YWTEDU
             </a>
 
@@ -137,6 +137,7 @@
         </div>
     </nav>
 
+
     <!-- HERO -->
     <section class="hero">
         <div class="container">
@@ -145,27 +146,18 @@
 
             <p>
                 YWTEDU is a modern, cloud-based ERP designed to automate admin tasks and
-                seamlessly connect teachers, students, and parents.
+                connect teachers, students, and parents.
             </p>
 
-            <!-- BUTTONS -->
-            <div class="d-flex flex-column flex-sm-row justify-content-center gap-3 mt-3">
-
+            <div class="d-flex justify-content-center gap-3">
                 <button class="btn btn-main" data-bs-toggle="modal" data-bs-target="#demoModal">
                     Start Free Demo
                 </button>
-                <!-- 
-                <a href="#" class="btn btn-outline-primary px-4 py-2 fw-semibold">
-                    Login
-                </a> -->
 
-                <a href="#" class="btn btn-outline-primary px-4 py-2 fw-semibold" data-bs-toggle="modal"
-                    data-bs-target="#loginModal">
+                <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#loginModal">
                     Login
-                </a>
-
+                </button>
             </div>
-
         </div>
     </section>
 
@@ -288,23 +280,25 @@
         </div>
     </section>
 
-<!-- STREAMLINED PRO FOOTER -->
+    <!-- STREAMLINED PRO FOOTER -->
     <footer class="footer pt-5 pb-4" style="background: #0f172a; color: #94a3b8;">
         <div class="container">
             <div class="row g-4 align-items-center">
-                
+
                 <!-- BRAND COLUMN -->
                 <div class="col-lg-6 col-md-12 text-center text-lg-start">
                     <div class="d-flex align-items-center justify-content-center justify-content-lg-start mb-3">
-                        <div class="bg-primary rounded-3 me-2 d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                        <div class="bg-primary rounded-3 me-2 d-flex align-items-center justify-content-center"
+                            style="width: 40px; height: 40px;">
                             <i class="bi bi-lightning-charge-fill text-white"></i>
                         </div>
                         <h3 class="text-white fw-bold mb-0">YWTEDU</h3>
                     </div>
                     <p class="small pe-lg-5 mb-4">
-                        YWTEDU is a modern, cloud-based ERP designed to automate admin tasks and seamlessly connect teachers, students, and parents.
+                        YWTEDU is a modern, cloud-based ERP designed to automate admin tasks and seamlessly connect
+                        teachers, students, and parents.
                     </p>
-                    
+
                     <!-- SOCIAL ICONS -->
                     <div class="d-flex gap-3 justify-content-center justify-content-lg-start">
                         <a href="https://facebook.com/YWT" class="social-icon" title="Follow YWT on Facebook">
@@ -321,8 +315,10 @@
 
                 <!-- CONTACT INFO COLUMN -->
                 <div class="col-lg-6 col-md-12">
-                    <div class="p-4 rounded-4" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05);">
-                        <h6 class="text-white fw-bold mb-3 text-uppercase small" style="letter-spacing: 1px;">Contact Information</h6>
+                    <div class="p-4 rounded-4"
+                        style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05);">
+                        <h6 class="text-white fw-bold mb-3 text-uppercase small" style="letter-spacing: 1px;">Contact
+                            Information</h6>
                         <div class="row g-3">
                             <div class="col-sm-6">
                                 <div class="d-flex align-items-center">
@@ -378,7 +374,8 @@
         }
 
         .social-icon:hover {
-            background: #6366f1; /* Primary color */
+            background: #6366f1;
+            /* Primary color */
             color: white;
             transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
@@ -395,8 +392,71 @@
         }
     </style>
 
-    <!-- DEMO MODAL -->
-    <!-- BEAUTIFUL DEMO MODAL -->
+    <!-- LOGIN MODAL -->
+    <div class="modal fade" id="loginModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden">
+
+                <!-- HEADER -->
+                <div class="modal-header text-white" style="background: linear-gradient(135deg, #0B1C39, #4A90E2);">
+                    <div>
+                        <h5 class="modal-title fw-bold">Welcome Back</h5>
+                        <small>Login to YWTEDU Dashboard</small>
+                    </div>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+
+                <!-- BODY -->
+                <div class="modal-body p-4">
+
+                    <!-- ✅ LARAVEL LOGIN FORM -->
+                    <form method="POST" action="{{ route('login') }}">
+                        @csrf
+
+                        <!-- EMAIL -->
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Email</label>
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="bi bi-envelope"></i>
+                                </span>
+                                <input type="email" name="email" class="form-control" required>
+                            </div>
+                        </div>
+
+                        <!-- PASSWORD -->
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Password</label>
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="bi bi-lock"></i>
+                                </span>
+                                <input type="password" name="password" class="form-control" required>
+                            </div>
+                        </div>
+
+                        <!-- REMEMBER ME -->
+                        <div class="form-check mb-3">
+                            <input class="form-check-input" type="checkbox" name="remember" id="remember">
+                            <label class="form-check-label" for="remember">
+                                Remember me
+                            </label>
+                        </div>
+
+                        <!-- BUTTON -->
+                        <button type="submit" class="btn w-100 text-white fw-semibold"
+                            style="background: linear-gradient(135deg, #4A90E2, #6C5CE7); padding: 12px; border-radius: 12px;">
+                            🔐 Login
+                        </button>
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- DEMO MODAL (UNCHANGED SIMPLE) -->
     <div class="modal fade" id="demoModal" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden">
@@ -485,75 +545,6 @@
     </div>
 
 
-    <!-- LOGIN MODAL -->
-    <div class="modal fade" id="loginModal" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden">
-
-                <!-- HEADER -->
-                <div class="modal-header text-white" style="background: linear-gradient(135deg, #0B1C39, #4A90E2);">
-                    <div>
-                        <h5 class="modal-title fw-bold">Welcome Back</h5>
-                        <small>Login to YWTEDU Dashboard</small>
-                    </div>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-                </div>
-
-                <!-- BODY -->
-                <div class="modal-body p-4">
-
-                    <form>
-
-                        <!-- EMAIL -->
-                        <div class="mb-3">
-                            <label class="form-label fw-semibold">Email</label>
-                            <div class="input-group">
-                                <span class="input-group-text bg-light">
-                                    <i class="bi bi-envelope"></i>
-                                </span>
-                                <input type="email" class="form-control" placeholder="Enter your email">
-                            </div>
-                        </div>
-
-                        <!-- PASSWORD -->
-                        <div class="mb-3">
-                            <label class="form-label fw-semibold">Password</label>
-                            <div class="input-group">
-                                <span class="input-group-text bg-light">
-                                    <i class="bi bi-lock"></i>
-                                </span>
-                                <input type="password" class="form-control" placeholder="Enter password">
-                            </div>
-                        </div>
-
-                        <!-- REMEMBER -->
-                        <div class="d-flex justify-content-between align-items-center mb-3">
-                            <div>
-                                <input type="checkbox" id="remember">
-                                <label for="remember" class="small">Remember me</label>
-                            </div>
-                            <a href="#" class="small text-primary text-decoration-none">Forgot password?</a>
-                        </div>
-
-                        <!-- LOGIN BUTTON -->
-                        <button type="submit" class="btn w-100 text-white fw-semibold"
-                            style="background: linear-gradient(135deg, #4A90E2, #6C5CE7); padding: 12px; border-radius: 12px;">
-                            🔐 Login
-                        </button>
-
-                    </form>
-
-                </div>
-
-                <!-- FOOTER -->
-                <div class="text-center p-3 bg-light small">
-                    Don't have an account? <a href="#" class="text-primary">Contact Admin</a>
-                </div>
-
-            </div>
-        </div>
-    </div>
-    <!-- BOOTSTRAP JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>

@@ -1,0 +1,60 @@
+/* sidebar.css */
+.sidebar { 
+    width: 260px; 
+    height: 100vh; 
+    position: fixed; 
+    left: 0;
+    top: 0;
+    background: var(--sidebar-bg); 
+    color: white; 
+    padding: 24px; 
+    display: flex; 
+    flex-direction: column; 
+    z-index: 1100;
+    transition: transform 0.3s ease-in-out;
+}
+
+.sidebar-brand { 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    margin-bottom: 30px; 
+}
+
+.sidebar-logo { 
+    width: 80px;  /* Fixed size */
+    height: 80px; 
+    background: white; 
+    border-radius: 15px; 
+    overflow: hidden; /* Ensures logo stays inside */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebar-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Prevents stretching */
+}
+
+.sidebar a { 
+    color: rgba(255,255,255,0.7); 
+    text-decoration: none; 
+    padding: 12px 15px; 
+    border-radius: 10px; 
+    transition: 0.3s; 
+    display: flex; 
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.sidebar a:hover, .sidebar a.active { 
+    background: rgba(255,255,255,0.1); 
+    color: white; 
+}
+
+@media (max-width: 991px) {
+    .sidebar { transform: translateX(-100%); }
+    .sidebar.show { transform: translateX(0); }
+}

@@ -1,0 +1,96 @@
+/* topbar.css */
+
+/* Main Topbar Container */
+.topbar { 
+    background: white; 
+    padding: 12px 20px; 
+    border-radius: 15px; 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03); 
+    margin-bottom: 25px; 
+}
+
+/* Mobile Menu Toggle Button (Hidden on Desktop) */
+.menu-toggle {
+    display: none; 
+    background: #f4f7fe;
+    border: 1px solid #eef2f6;
+    padding: 5px 10px;
+    border-radius: 8px;
+    color: #2b3674;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.menu-toggle:hover {
+    background: #e0e7ff;
+}
+
+/* Search Box Styles */
+.search-box { 
+    position: relative; 
+    width: 300px; 
+    transition: width 0.3s ease;
+}
+
+.search-box input { 
+    border-radius: 20px; 
+    padding: 8px 15px 8px 40px; 
+    border: 1px solid #eef2f6; 
+    background: #fcfcfc; 
+    width: 100%;
+    font-size: 0.9rem;
+}
+
+.search-box input:focus {
+    outline: none;
+    border-color: #4A90E2;
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+}
+
+.search-box i { 
+    position: absolute; 
+    left: 15px; 
+    top: 50%;
+    transform: translateY(-50%);
+    color: #a3aed0;
+}
+
+/* Responsive Adjustments */
+
+/* Tablets and Mobile Landscape */
+@media (max-width: 991px) {
+    .menu-toggle { 
+        display: block; 
+    }
+    
+    /* Shrink the search bar so it fits next to the menu button */
+    .search-box { 
+        width: 180px; 
+    }
+}
+
+/* Small Mobile Phones */
+@media (max-width: 576px) {
+    .search-box { 
+        width: 140px; 
+    }
+    
+    /* Hide profile text labels to keep the UI clean */
+    .profile-info { 
+        display: none; 
+    }
+}
+
+/* Very Small Screen Fix */
+@media (max-width: 400px) {
+    .search-box { 
+        width: 110px; 
+    }
+    
+    .search-box input::placeholder {
+        color: transparent; /* Hides 'Search...' text if it clips */
+    }
+}
