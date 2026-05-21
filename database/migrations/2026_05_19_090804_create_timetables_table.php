@@ -30,6 +30,9 @@ return new class extends Migration
             $table->string('room')->nullable();
 
             $table->timestamps();
+
+            
+
         });
     }
 

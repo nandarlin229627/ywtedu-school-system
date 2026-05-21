@@ -10,22 +10,31 @@ class UserSeeder extends Seeder
 {
     public function run(): void
     {
-        User::create([
-            'name' => 'Admin User',
-            'email' => 'admin@ywt.edu',
-            'password' => Hash::make('password123'),
-        ]);
-
-        User::create([
-            'name' => 'Teacher One',
-            'email' => 'teacher@ywt.edu',
-            'password' => Hash::make('password123'),
-        ]);
-
-        User::create([
-            'name' => 'Student One',
-            'email' => 'student@ywt.edu',
-            'password' => Hash::make('password123'),
+        User::insert([
+            [
+                'name' => 'Admin User',
+                'email' => 'admin@gmail.com',
+                'password' => Hash::make('password123'),
+                'role' => 'admin',
+                'phone' => '1111111111',
+                'address' => 'Main Office',
+            ],
+            [
+                'name' => 'Teacher One',
+                'email' => 'teacher@gmail.com',
+                'password' => Hash::make('password123'),
+                'role' => 'teacher',
+                'phone' => '2222222222',
+                'address' => 'Staff Room',
+            ],
+            [
+                'name' => 'Student One',
+                'email' => 'student@gmail.com',
+                'password' => Hash::make('password123'),
+                'role' => 'student',
+                'phone' => '3333333333',
+                'address' => 'Dormitory',
+            ],
         ]);
     }
 }

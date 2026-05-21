@@ -1,0 +1,130 @@
+:root {
+    --primary: #4A90E2;
+    --bg: #f4f7fe;
+    --card: #ffffff;
+    --text: #2b3674;
+    --muted: #8a94a6;
+    --radius: 14px;
+}
+
+/* BODY */
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+}
+
+/* MAIN AREA */
+.main {
+    margin-left: 260px;
+    padding: 20px;
+    transition: 0.3s;
+}
+
+@media (max-width: 992px) {
+    .main {
+        margin-left: 0;
+        padding: 15px;
+    }
+}
+
+/* CARD */
+.card-ui {
+    background: var(--card);
+    border-radius: var(--radius);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+    padding: 20px;
+}
+
+/* STAT CARD */
+.stat-card {
+    background: white;
+    border-radius: var(--radius);
+    padding: 18px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    transition: 0.3s;
+}
+
+.stat-card:hover {
+    transform: translateY(-4px);
+}
+
+.stat-value {
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.stat-label {
+    font-size: 12px;
+    color: var(--muted);
+}
+
+/* BUTTONS */
+.btn-primary {
+    background: var(--primary);
+    border: none;
+    border-radius: 10px;
+}
+
+.btn-primary:hover {
+    background: #357bd8;
+}
+
+/* TABLE */
+.table thead {
+    background: #f8f9fc;
+    font-size: 12px;
+    color: var(--muted);
+}
+
+.table td {
+    vertical-align: middle;
+}
+
+/* MOBILE CARDS */
+@media (max-width: 768px) {
+    .table-responsive {
+        display: none;
+    }
+
+    .mobile-card {
+        background: white;
+        padding: 15px;
+        border-radius: 14px;
+        margin-bottom: 12px;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    }
+}
+
+/* SIDEBAR */
+.sidebar {
+    width: 260px;
+    position: fixed;
+    height: 100vh;
+    background: #1f2a44;
+    color: white;
+}
+
+.sidebar a {
+    display: block;
+    padding: 12px 18px;
+    color: #cfd6e4;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.sidebar a:hover,
+.sidebar a.active {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+/* TOPBAR */
+.topbar {
+    background: white;
+    padding: 12px 18px;
+    border-radius: var(--radius);
+    margin-bottom: 20px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+}
