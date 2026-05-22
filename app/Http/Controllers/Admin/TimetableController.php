@@ -170,4 +170,33 @@ class TimetableController extends Controller
         return back()
             ->with('success', 'Deleted successfully');
     }
+
+        public function availableSlots(Request $request)
+    {
+        $allSlots = [
+            '09:00 - 09:45',
+            '09:45 - 10:30',
+            '10:30 - 11:15',
+            '11:15 - 12:00',
+            '12:00 - 01:45',
+            '01:45 - 02:30',
+            '02:30 - 03:15',
+            '03:15 - 04:00',
+        ];
+
+        $classBusy = Timetable::where('class_id', $request->class_id)
+            ->where('day', $request->day)
+            ->pluck('time')
+            ->toArray();
+
+        $teacherBusy = Timetable::where('teacher_id', $request->teacher_id)
+            ->where('day', $request->day)
+            ->pluck('time')
+            ->toArray();
+
+        // ❌ REMOVE CONFLICT TIMES
+        $available = array_values(array_diff($allSlots, $classBusy, $teacherBusy));
+
+        return response()->json($available);
+    }
 }

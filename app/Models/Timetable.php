@@ -47,4 +47,6 @@ class Timetable extends Model
     {
         return $this->belongsTo(SchoolClass::class, 'class_id');
     }
+
+    
 }

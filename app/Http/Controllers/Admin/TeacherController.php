@@ -65,7 +65,7 @@ class TeacherController extends Controller
         $request->validate([
             'name'          => 'required|string|max:255',
             'email'         => 'required|email|unique:users,email',
-            'teacher_no'    => 'required|string|unique:teachers,teacher_no',
+            // 'teacher_no'    => 'required|string|unique:teachers,teacher_no',
             'phone'         => 'nullable|string|max:20',
             'qualification' => 'nullable|string|max:255',
             'hire_date'     => 'required|date',
@@ -95,7 +95,7 @@ class TeacherController extends Controller
         */
         $teacher = Teacher::create([
             'user_id'       => $user->id,
-            'teacher_no'    => $request->teacher_no,
+            // 'teacher_no'    => $request->teacher_no,
             'phone'         => $request->phone,
             'qualification' => $request->qualification,
             'hire_date'     => $request->hire_date,
@@ -141,7 +141,7 @@ class TeacherController extends Controller
         $request->validate([
             'name'          => 'required|string|max:255',
             'email'         => 'required|email|unique:users,email,' . $teacher->user_id,
-            'teacher_no'    => 'required|string|unique:teachers,teacher_no,' . $teacher->id,
+            // 'teacher_no'    => 'required|string|unique:teachers,teacher_no,' . $teacher->id,
             'phone'         => 'nullable|string|max:20',
             'qualification' => 'nullable|string|max:255',
             'hire_date'     => 'required|date',
@@ -167,7 +167,7 @@ class TeacherController extends Controller
         |--------------------------------------------------------------------------
         */
         $teacher->update([
-            'teacher_no'    => $request->teacher_no,
+            // 'teacher_no'    => $request->teacher_no,
             'phone'         => $request->phone,
             'qualification' => $request->qualification,
             'hire_date'     => $request->hire_date,
@@ -223,5 +223,13 @@ class TeacherController extends Controller
         $teacher = Teacher::with('user', 'subjects')->findOrFail($id);
 
         return view('admin.teachers.profile', compact('teacher'));
+    }
+
+
+    public function getSubjects($id)
+    {
+        $teacher = Teacher::with('subjects')->findOrFail($id);
+
+        return response()->json($teacher->subjects);
     }
 }

@@ -1,7 +1,26 @@
 @extends('layouts.admin')
 
 @section('content')
+<!-- TOP BAR -->
+<div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-4 gap-3">
 
+    <div>
+        <h4 class="fw-bold mb-1">Teachers Management</h4>
+        <p class="text-muted mb-0">
+            Manage all teachers, subjects, and status
+        </p>
+    </div>
+
+    <div class="d-flex gap-2">
+
+        <!-- Create -->
+        <a href="{{ route('teachers.create') }}" class="btn btn-success">
+            <i class="bi bi-plus-lg"></i> Add Teacher
+        </a>
+
+    </div>
+
+</div>
 <!-- STATS -->
 <div class="row g-3 mb-4">
 
@@ -50,11 +69,7 @@
         </div>
     </form>
 
-    <div class="ms-3">
-        <a href="{{ route('teachers.create') }}" class="btn btn-success">
-            <i class="bi bi-plus-lg"></i> Add New Teacher
-        </a>
-    </div>
+    
 </div>
 
 <!-- TABLE -->
@@ -63,7 +78,7 @@
     <table class="table table-hover align-middle">
         <thead>
             <tr>
-                <th>No</th>
+                <!-- <th>No</th> -->
                 <th>Name</th>
                 <th>Subjects</th>
                 <th>Status</th>
@@ -75,7 +90,7 @@
         @foreach($teachers as $teacher)
             <tr>
 
-                <td>{{ $teacher->teacher_no }}</td>
+                <!-- <td>{{ $teacher->teacher_no }}</td> -->
 
                 <td>
                     <div class="d-flex align-items-center gap-2">

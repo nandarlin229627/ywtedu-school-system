@@ -5,18 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Subject extends Model
+class Room extends Model
 {
     use HasFactory;
-
      protected $fillable = [
-        'subject_name'
+        'room_name'
     ];
-
-        public function teachers()
-    {
-        return $this->belongsToMany(Teacher::class);
-    }
-
-    
 }

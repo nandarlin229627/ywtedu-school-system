@@ -13,23 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('teachers', function (Blueprint $table) {
+        Schema::create('rooms', function (Blueprint $table) {
+
             $table->id();
 
-            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-
-            // $table->string('teacher_no')->unique();
-
-            $table->string('qualification');
-
-            $table->date('hire_date');
-
-            $table->decimal('salary', 10, 2);
+            // Example: Room 101, Lab A
+            $table->string('room_name');
 
             $table->timestamps();
         });
-
-       
     }
 
     /**
@@ -39,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('teachers');
+        Schema::dropIfExists('rooms');
     }
 };

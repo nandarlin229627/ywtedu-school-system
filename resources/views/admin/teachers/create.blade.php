@@ -37,10 +37,10 @@
                 <input type="email" name="email" class="form-control" value="{{ old('email') }}" required>
             </div>
 
-            <div class="col-md-6">
+            <!-- <div class="col-md-6">
                 <label class="form-label">Teacher No</label>
                 <input type="text" name="teacher_no" class="form-control" value="{{ old('teacher_no') }}" required>
-            </div>
+            </div> -->
 
             <div class="col-md-6">
                 <label class="form-label">Hire Date</label>

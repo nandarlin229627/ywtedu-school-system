@@ -42,12 +42,12 @@
                        class="form-control" required>
             </div>
 
-            <div class="col-md-6">
+            <!-- <div class="col-md-6">
                 <label class="form-label">Teacher No</label>
                 <input type="text" name="teacher_no"
                        value="{{ old('teacher_no', $teacher->teacher_no) }}"
                        class="form-control" required>
-            </div>
+            </div> -->
 
             <div class="col-md-6">
                 <label class="form-label">Hire Date</label>

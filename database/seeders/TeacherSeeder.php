@@ -21,7 +21,7 @@ class TeacherSeeder extends Seeder
 
         $teacher1 = Teacher::create([
             'user_id' => $teacherUser1->id,
-            'teacher_no' => 'TCH001',
+            // 'teacher_no' => 'TCH001',
             'qualification' => 'B.Ed Mathematics',
             'hire_date' => '2023-01-10',
             'salary' => 500000,
@@ -43,7 +43,7 @@ class TeacherSeeder extends Seeder
 
         $teacher2 = Teacher::create([
             'user_id' => $teacherUser2->id,
-            'teacher_no' => 'TCH002',
+            // 'teacher_no' => 'TCH002',
             'qualification' => 'M.Sc Physics',
             'hire_date' => '2022-06-15',
             'salary' => 650000,

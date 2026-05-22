@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class SchoolClassSeeder extends Seeder
+class RoomSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,32 +14,31 @@ class SchoolClassSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('school_classes')->insert([
+        DB::table('rooms')->insert([
 
             [
-                'class_name' => 'Grade 1 (A)',
-                'teacher_id' => 1,
-                'room_id' => 1,
+                'room_name' => 'Room 101',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
 
             [
-                'class_name' => 'Grade 1 (B)',
-                'teacher_id' => 2,
-                'room_id' => 2,
+                'room_name' => 'Room 102',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
 
             [
-                'class_name' => 'Grade 2 (A)',
-                'teacher_id' => 3,
-                'room_id' => 3,
+                'room_name' => 'Lab A',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
 
+            [
+                'room_name' => 'Hall 1',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
 
         ]);
     }

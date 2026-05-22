@@ -8,6 +8,17 @@ use App\Http\Controllers\Admin\TimetableController; // ✅ Added Timetable Contr
 use App\Http\Controllers\Admin\ParentController;
 use App\Http\Controllers\Admin\TeacherAttendanceController;
 use App\Http\Controllers\Admin\StudentAttendanceController;
+// ✅ IMPORTANT: alias parent controller
+use App\Http\Controllers\Parent\DashboardController as ParentDashboardController;
+use App\Http\Controllers\Admin\SubjectController;
+use App\Http\Controllers\Admin\RoomController;
+use App\Http\Controllers\Admin\SchoolClassController;
+
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/parent/dashboard', [ParentDashboardController::class, 'index'])
+        ->name('parent.dashboard');
+});
 
 Route::get('/', function () {
     return view('welcome');
@@ -48,8 +59,19 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/teachers/{id}/profile', [TeacherController::class, 'profile'])->name('teachers.profile');
 });
 
+
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/parent/dashboard', [\App\Http\Controllers\Parent\DashboardController::class, 'index']);
+});
+
+
 // Admin routes
-Route::prefix('admin')->middleware(['auth'])->group(function () {
+// Route::prefix('admin')->middleware(['auth'])->group(function () {
+Route::prefix('admin')
+    ->middleware(['auth'])
+    ->name('admin.')   // ✅ THIS IS MISSING
+    ->group(function (){
 
     Route::get('/dashboard', [DashboardController::class, 'index']);
 
@@ -62,10 +84,13 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::resource('timetables', TimetableController::class);
     Route::get('/timetables/frame', [TimetableController::class, 'frame'])->name('timetables.frame');
     
-    
+    Route::resource('subjects', SubjectController::class);
+    Route::resource('rooms', RoomController::class);
+    Route::resource('classes', SchoolClassController::class);
    
 
 });
+
 
 
 Route::middleware(['auth'])->group(function () {
@@ -74,7 +99,12 @@ Route::middleware(['auth'])->group(function () {
 
 });
 
-Route::resource('parents', ParentController::class);
+Route::get('/admin/timetable/available-slots',
+    [TimetableController::class, 'availableSlots']
+);
+Route::get('/admin/teacher/{id}/subjects', [TeacherController::class, 'getSubjects']);
+
+
 
 Route::get('/parents/profile/{id}',
     [ParentController::class, 'profile'])
@@ -132,4 +162,11 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
 
 });
 
+
+Route::middleware(['auth'])->group(function () {
+
+    Route::get('/dashboard', [DashboardController::class, 'index'])
+        ->name('dashboard');
+
+});
 require __DIR__.'/auth.php';

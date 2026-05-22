@@ -22,14 +22,24 @@ class Student extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function parent()
+    {
+        return $this->belongsTo(ParentModel::class, 'parent_id');
+    }
+
     public function attendances()
     {
         return $this->hasMany(Attendance::class);
     }
 
-    public function results()
+    // public function marks()
+    // {
+    //     return $this->hasMany(Mark::class);
+    // }
+
+        public function results()
     {
-        return $this->hasMany(Result::class);
+        return $this->hasMany(\App\Models\Result::class);
     }
 
     public function invoices()
@@ -37,10 +47,14 @@ class Student extends Model
         return $this->hasMany(Invoice::class);
     }
 
+    // ✅ FIXED RELATION (IMPORTANT)
     public function classes()
     {
-        return $this->belongsToMany(SchoolClass::class, 'student_class');
+        return $this->belongsToMany(
+            SchoolClass::class,
+            'student_class',
+            'student_id',
+            'class_id'
+        );
     }
-
-    
 }

@@ -3,13 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use Illuminate\Http\Request;
+use App\Models\Student;
+use App\Models\ParentModel;
+use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
     public function index()
     {
-        $user = auth()->user();
+        $user = Auth::user();
 
         if (!$user) {
             return redirect('/login');
@@ -17,27 +19,39 @@ class DashboardController extends Controller
 
         return match ($user->role) {
 
-            // ADMIN DASHBOARD
             'admin' => view('admin.index', [
-
                 'students' => User::where('role', 'student')->count(),
-
                 'teachers' => User::where('role', 'teacher')->count(),
-
-                'parents' => User::where('role', 'parent')->count(),
-
-                'staffs' => User::where('role', 'staff')->count(),
-
+                'parents'  => User::where('role', 'parent')->count(),
+                'staffs'   => User::where('role', 'staff')->count(),
             ]),
 
-            // TEACHER DASHBOARD
             'teacher' => view('teacher.index'),
 
-            // STUDENT DASHBOARD
             'student' => view('student.index'),
 
-            // PARENT DASHBOARD
-            'parent' => view('parent.index'),
+            // ✅ PARENT DASHBOARD FIXED
+            'parent' => (function () use ($user) {
+
+                $parent = ParentModel::where('user_id', $user->id)->first();
+
+                if (!$parent) {
+                    return view('parent.index', [
+                        'students' => collect()
+                    ]);
+                }
+
+                $students = Student::with([
+                        'attendances',
+                        'classes',
+                        'results'
+                    ])
+                    ->where('parent_id', $parent->id)
+                    ->get();
+
+                return view('parent.index', compact('students'));
+
+            })(),
 
             default => abort(403),
         };

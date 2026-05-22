@@ -393,68 +393,143 @@
     </style>
 
     <!-- LOGIN MODAL -->
-    <div class="modal fade" id="loginModal" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden">
+    <!-- LOGIN MODAL -->
+<div class="modal fade" id="loginModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden">
 
-                <!-- HEADER -->
-                <div class="modal-header text-white" style="background: linear-gradient(135deg, #0B1C39, #4A90E2);">
-                    <div>
-                        <h5 class="modal-title fw-bold">Welcome Back</h5>
-                        <small>Login to YWTEDU Dashboard</small>
-                    </div>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            <!-- HEADER -->
+            <div class="modal-header text-white"
+                style="background: linear-gradient(135deg, #0B1C39, #4A90E2);">
+
+                <div>
+                    <h5 class="modal-title fw-bold">Welcome Back</h5>
+                    <small>Login to YWTEDU Dashboard</small>
                 </div>
 
-                <!-- BODY -->
-                <div class="modal-body p-4">
+                <button type="button"
+                    class="btn-close btn-close-white"
+                    data-bs-dismiss="modal"></button>
 
-                    <!-- ✅ LARAVEL LOGIN FORM -->
-                    <form method="POST" action="{{ route('login') }}">
-                        @csrf
+            </div>
 
-                        <!-- EMAIL -->
-                        <div class="mb-3">
-                            <label class="form-label fw-semibold">Email</label>
-                            <div class="input-group">
-                                <span class="input-group-text">
-                                    <i class="bi bi-envelope"></i>
-                                </span>
-                                <input type="email" name="email" class="form-control" required>
-                            </div>
+            <!-- BODY -->
+            <div class="modal-body p-4">
+
+                <!-- SESSION STATUS -->
+                @if (session('status'))
+                    <div class="alert alert-success rounded-3">
+                        {{ session('status') }}
+                    </div>
+                @endif
+
+                <!-- VALIDATION ERRORS -->
+                @if ($errors->any())
+                    <div class="alert alert-danger rounded-3">
+                        <ul class="mb-0 ps-3">
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
+                <!-- LOGIN FORM -->
+                <form method="POST" action="{{ route('login') }}">
+                    @csrf
+
+                    <!-- EMAIL -->
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">
+                            Email Address
+                        </label>
+
+                        <div class="input-group">
+
+                            <span class="input-group-text bg-light">
+                                <i class="bi bi-envelope"></i>
+                            </span>
+
+                            <input type="email"
+                                name="email"
+                                class="form-control"
+                                value="{{ old('email') }}"
+                                placeholder="Enter your email"
+                                required
+                                autofocus>
+
+                        </div>
+                    </div>
+
+                    <!-- PASSWORD -->
+                    <div class="mb-3">
+
+                        <label class="form-label fw-semibold">
+                            Password
+                        </label>
+
+                        <div class="input-group">
+
+                            <span class="input-group-text bg-light">
+                                <i class="bi bi-lock"></i>
+                            </span>
+
+                            <input type="password"
+                                name="password"
+                                class="form-control"
+                                placeholder="Enter your password"
+                                required>
+
                         </div>
 
-                        <!-- PASSWORD -->
-                        <div class="mb-3">
-                            <label class="form-label fw-semibold">Password</label>
-                            <div class="input-group">
-                                <span class="input-group-text">
-                                    <i class="bi bi-lock"></i>
-                                </span>
-                                <input type="password" name="password" class="form-control" required>
-                            </div>
-                        </div>
+                    </div>
 
-                        <!-- REMEMBER ME -->
-                        <div class="form-check mb-3">
-                            <input class="form-check-input" type="checkbox" name="remember" id="remember">
-                            <label class="form-check-label" for="remember">
+                    <!-- REMEMBER + FORGOT -->
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+
+                        <div class="form-check">
+                            <input class="form-check-input"
+                                type="checkbox"
+                                name="remember"
+                                id="remember">
+
+                            <label class="form-check-label"
+                                for="remember">
                                 Remember me
                             </label>
                         </div>
 
-                        <!-- BUTTON -->
-                        <button type="submit" class="btn w-100 text-white fw-semibold"
-                            style="background: linear-gradient(135deg, #4A90E2, #6C5CE7); padding: 12px; border-radius: 12px;">
-                            🔐 Login
-                        </button>
-                    </form>
+                        @if (Route::has('password.request'))
 
-                </div>
+                            <a href="{{ route('password.request') }}"
+                                class="text-decoration-none small fw-semibold text-primary">
+
+                                Forgot Password?
+
+                            </a>
+
+                        @endif
+
+                    </div>
+
+                    <!-- LOGIN BUTTON -->
+                    <button type="submit"
+                        class="btn w-100 text-white fw-semibold"
+                        style="background: linear-gradient(135deg, #4A90E2, #6C5CE7);
+                               padding: 12px;
+                               border-radius: 12px;">
+
+                        🔐 Login
+
+                    </button>
+
+                </form>
 
             </div>
+
         </div>
     </div>
+</div>
 
     <!-- DEMO MODAL (UNCHANGED SIMPLE) -->
     <div class="modal fade" id="demoModal" tabindex="-1">
