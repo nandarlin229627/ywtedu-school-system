@@ -7,12 +7,12 @@
     <div class="d-flex justify-content-between mb-4">
         <h3 class="fw-bold">➕ Create Timetable</h3>
 
-        <a href="{{ route('timetables.index') }}" class="btn btn-light">
+        <a href="{{ route('admin.timetables.index') }}" class="btn btn-light">
             Back
         </a>
     </div>
 
-    <form action="{{ route('timetables.store') }}" method="POST">
+    <form action="{{ route('admin.timetables.store') }}" method="POST">
         @csrf
 
         <div class="row g-3">

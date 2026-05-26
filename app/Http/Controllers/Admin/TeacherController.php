@@ -60,12 +60,12 @@ class TeacherController extends Controller
     | STORE TEACHER
     |--------------------------------------------------------------------------
     */
-    public function store(Request $request)
+        public function store(Request $request)
     {
         $request->validate([
             'name'          => 'required|string|max:255',
             'email'         => 'required|email|unique:users,email',
-            // 'teacher_no'    => 'required|string|unique:teachers,teacher_no',
+            'password'      => 'required|min:6|confirmed',
             'phone'         => 'nullable|string|max:20',
             'qualification' => 'nullable|string|max:255',
             'hire_date'     => 'required|date',
@@ -74,28 +74,17 @@ class TeacherController extends Controller
             'subjects.*'    => 'exists:subjects,id',
         ]);
 
-        /*
-        |--------------------------------------------------------------------------
-        | CREATE USER ACCOUNT
-        |--------------------------------------------------------------------------
-        */
-        $password = Str::random(8);
-
+        // CREATE USER WITH FORM PASSWORD
         $user = User::create([
             'name'     => $request->name,
             'email'    => $request->email,
-            'password' => Hash::make($password),
+            'password' => Hash::make($request->password),
             'role'     => 'teacher',
         ]);
 
-        /*
-        |--------------------------------------------------------------------------
-        | CREATE TEACHER
-        |--------------------------------------------------------------------------
-        */
+        // CREATE TEACHER
         $teacher = Teacher::create([
             'user_id'       => $user->id,
-            // 'teacher_no'    => $request->teacher_no,
             'phone'         => $request->phone,
             'qualification' => $request->qualification,
             'hire_date'     => $request->hire_date,
@@ -103,15 +92,10 @@ class TeacherController extends Controller
             'status'        => 'active',
         ]);
 
-        /*
-        |--------------------------------------------------------------------------
-        | ATTACH SUBJECTS
-        |--------------------------------------------------------------------------
-        */
         $teacher->subjects()->sync($request->subjects ?? []);
 
         return redirect()
-            ->route('teachers.index')
+            ->route('admin.teachers.index')
             ->with('success', 'Teacher created successfully!');
     }
 
@@ -183,7 +167,7 @@ class TeacherController extends Controller
         $teacher->subjects()->sync($request->subjects ?? []);
 
         return redirect()
-            ->route('teachers.index')
+            ->route('admin.teachers.index')
             ->with('success', 'Teacher updated successfully!');
     }
 

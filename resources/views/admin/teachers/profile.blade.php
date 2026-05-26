@@ -152,13 +152,13 @@
         <div>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb mb-2">
-                    <li class="breadcrumb-item"><a href="{{ route('teachers.index') }}" class="text-decoration-none text-muted small fw-medium">Teachers</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('admin.teachers.index') }}" class="text-decoration-none text-muted small fw-medium">Teachers</a></li>
                     <li class="breadcrumb-item active text-dark small fw-semibold" aria-current="page">Profile Overview</li>
                 </ol>
             </nav>
             <h3 class="fw-bold text-dark mb-0">Teacher Directory</h3>
         </div>
-        <a href="{{ route('teachers.index') }}" class="btn btn-back shadow-sm">
+        <a href="{{ route('admin.teachers.index') }}" class="btn btn-back shadow-sm">
             <i class="fa-solid fa-arrow-left me-2"></i> Back to List
         </a>
     </div>
@@ -285,7 +285,7 @@
                     <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center gap-3">
                         <!-- <span class="text-muted small"><i class="fa-solid fa-shield-halved me-1.5 opacity-75"></i>Admin Authorization level required to mutate data profiles.</span> -->
                         <div class="d-flex gap-2 w-100 w-md-auto justify-content-end">
-                            <a href="{{ route('teachers.edit', $teacher->id) }}" class="btn btn-primary btn-action shadow-sm px-4">
+                            <a href="{{ route('admin.teachers.edit', $teacher->id) }}" class="btn btn-primary btn-action shadow-sm px-4">
                                 <i class="fa-regular fa-pen-to-square me-2"></i>Edit File
                             </a>
                             <button class="btn btn-outline-danger btn-action deleteTeacher" data-id="{{ $teacher->id }}">

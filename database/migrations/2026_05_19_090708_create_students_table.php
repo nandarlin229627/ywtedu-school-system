@@ -17,18 +17,31 @@ return new class extends Migration
             $table->id();
 
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+$table->string('student_no')->nullable()->unique();
+            // $table->string('student_no')->unique();
 
-            $table->string('student_no')->unique();
-
-            $table->date('dob');
-
+            $table->string('name')->nullable();
+            $table->string('first_name')->nullable();
+            $table->string('last_name')->nullable();
+            $table->string('email')->unique()->nullable();
+            $table->string('password')->nullable();
+            $table->date('dob')->nullable();
+            $table->string('phone')->nullable();
             $table->text('address')->nullable();
+            $table->string('gender')->nullable();
+            $table->string('photo')->nullable();
+            $table->string('guardian_name')->nullable();
+            $table->string('relationship')->nullable();
+            $table->string('guardian_phone')->nullable();
+            $table->string('guardian_email')->nullable();
+            $table->string('grade')->nullable();
+            $table->string('previous_school')->nullable();
 
            $table->foreignId('parent_id')
             ->nullable()
             ->constrained('parents')
             ->nullOnDelete();
-
+             $table->string('status')->default('active');
             $table->timestamps();
         });
     }

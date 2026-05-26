@@ -95,7 +95,7 @@ class TimetableController extends Controller
         Timetable::create($request->all());
 
         return redirect()
-            ->route('timetables.index')
+            ->route('admin.timetables.index')
             ->with('success', '✅ Timetable created successfully!');
     }
 
@@ -153,7 +153,7 @@ class TimetableController extends Controller
         $timetable->update($request->all());
 
         return redirect()
-            ->route('timetables.index')
+            ->route('admin.timetables.index')
             ->with('success', '✅ Timetable updated successfully!');
     }
 

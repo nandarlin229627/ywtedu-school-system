@@ -12,25 +12,25 @@ class TeacherSeeder extends Seeder
     public function run()
     {
         // Teacher One
-        $teacherUser1 = User::create([
-            'name' => 'Teacher One',
-            'email' => 'teacher1@school.com',
-            'password' => Hash::make('password'),
-            'role' => 'teacher',
-        ]);
+        // $teacherUser1 = User::create([
+        //     'name' => 'Teacher One',
+        //     'email' => 'teacher1@school.com',
+        //     'password' => Hash::make('password'),
+        //     'role' => 'teacher',
+        // ]);
 
-        $teacher1 = Teacher::create([
-            'user_id' => $teacherUser1->id,
-            // 'teacher_no' => 'TCH001',
-            'qualification' => 'B.Ed Mathematics',
-            'hire_date' => '2023-01-10',
-            'salary' => 500000,
-            'status' => 'active',
-            'phone' => '09123456789', // ✅ added phone number
-        ]);
+        // $teacher1 = Teacher::create([
+        //     'user_id' => $teacherUser1->id,
+        //     // 'teacher_no' => 'TCH001',
+        //     'qualification' => 'B.Ed Mathematics',
+        //     'hire_date' => '2023-01-10',
+        //     'salary' => 500000,
+        //     'status' => 'active',
+        //     'phone' => '09123456789', // ✅ added phone number
+        // ]);
 
-        // Attach subjects (make sure subjects exist first!)
-        $teacher1->subjects()->attach([1, 2]);
+        // // Attach subjects (make sure subjects exist first!)
+        // $teacher1->subjects()->attach([1, 2]);
 
 
         // Teacher Two

@@ -7,40 +7,45 @@ use Illuminate\Support\Facades\DB;
 
 class SchoolClassSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
     public function run()
     {
-        DB::table('school_classes')->insert([
+        // Grade တစ်ခုစီအတွက် Section တွေကို သီးသန့်သတ်မှတ်ပေးခြင်း
+        $data = [
+            'Grade 1'  => ['A', 'B'],
+            'Grade 2'  => ['A', 'B'],
+            'Grade 3'  => ['A', 'B'],
+            'Grade 4'  => ['A', 'B'],
+            'Grade 5'  => ['A', 'B'],
+            'Grade 6'  => ['A', 'B'],
+            'Grade 7'  => ['A', 'B'],
+            'Grade 8'  => ['A', 'B'],
+            'Grade 9'  => ['A', 'B'],
+            'Grade 10'  => ['A', 'B'],
+            'Grade 11'  => ['A', 'B'],
+            'Grade 12'  => ['A', 'B']// ဥပမာ - Grade 3 မှာ C ပါမယ်ဆိုရင်
+            // ကျန်တဲ့ Grade တွေကိုလည်း ဒီအတိုင်း ဆက်ဖြည့်သွားနိုင်ပါတယ်
+        ];
 
-            [
-                'class_name' => 'Grade 1 (A)',
-                'teacher_id' => 1,
-                'room_id' => 1,
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
+        $classes = [];
+        $teacherId = 1;
+        $roomId = 1;
 
-            [
-                'class_name' => 'Grade 1 (B)',
-                'teacher_id' => 2,
-                'room_id' => 2,
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
+        foreach ($data as $gradeName => $sections) {
+            foreach ($sections as $section) {
+                $classes[] = [
+                    'class_name' => "$gradeName ($section)",
+                    'teacher_id' => $teacherId,
+                    'room_id'    => $roomId,
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ];
+                
+                // လိုအပ်ရင် ဒီနေရာမှာ ID ကို တိုးပေးပါ
+                $teacherId++;
+                $roomId++;
+            }
+        }
 
-            [
-                'class_name' => 'Grade 2 (A)',
-                'teacher_id' => 3,
-                'room_id' => 3,
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-
-
-        ]);
+        DB::table('school_classes')->insert($classes);
     }
 }

@@ -12,112 +12,6 @@
     --danger-gradient: linear-gradient(135deg, #ef4444, #f87171);
 }
 
-.dash-container {
-    padding: 1.5rem;
-    background-color: #f8fafc;
-    min-height: 100vh;
-}
-
-/* HEADER */
-.dash-header {
-    margin-bottom: 2rem;
-}
-
-.dash-title {
-    font-size: 1.75rem;
-    font-weight: 800;
-    color: #1e293b;
-    letter-spacing: -0.025em;
-}
-
-.dash-subtitle {
-    font-size: 0.875rem;
-    color: #64748b;
-    margin-top: 0.25rem;
-}
-
-/* MODERN USER PROFILE DROPDOWN */
-.user-dropdown .dropdown-toggle {
-    background: #ffffff;
-    padding: 0.5rem 1rem;
-    border-radius: 12px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    border: 1px solid #e2e8f0;
-    color: #334155;
-    transition: all 0.2s ease;
-}
-
-.user-dropdown .dropdown-toggle:hover,
-.user-dropdown .dropdown-toggle:focus {
-    background: #f8fafc;
-    border-color: #cbd5e1;
-    color: #0f172a;
-}
-
-.user-dropdown .avatar-placeholder {
-    width: 32px;
-    height: 32px;
-    background: var(--primary-gradient);
-    color: white;
-    font-weight: 700;
-    font-size: 0.85rem;
-    border-radius: 8px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 2px 8px rgba(79, 70, 229, 0.25);
-}
-
-.user-dropdown .dropdown-menu {
-    border: 1px solid #e2e8f0;
-    border-radius: 12px;
-    box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
-    padding: 0.5rem;
-    min-width: 210px;
-    margin-top: 0.5rem !important;
-}
-
-.user-dropdown .dropdown-header {
-    padding: 0.75rem 0.75rem 0.5rem;
-}
-
-.user-dropdown .dropdown-item {
-    border-radius: 8px;
-    padding: 0.6rem 0.75rem;
-    color: #475569;
-    font-size: 0.9rem;
-    font-weight: 500;
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    transition: all 0.15s ease;
-}
-
-.user-dropdown .dropdown-item:hover {
-    background-color: #f1f5f9;
-    color: #0f172a;
-}
-
-.user-dropdown .dropdown-item.text-danger:hover {
-    background-color: #fef2f2;
-    color: #dc2626;
-}
-
-.user-dropdown .dropdown-item button {
-    background: none;
-    border: none;
-    padding: 0;
-    margin: 0;
-    color: inherit;
-    font-size: inherit;
-    font-weight: inherit;
-    width: 100%;
-    text-align: left;
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-}
-
 /* STATS CARDS */
 .dash-card {
     background: #ffffff;
@@ -204,7 +98,7 @@
         </div>
         
         <!-- USER ACTIONS DROPDOWN -->
-        <div class="dropdown user-dropdown">
+        <!-- <div class="dropdown user-dropdown">
             <button class="btn dropdown-toggle d-flex align-items-center gap-2 border-0" type="button" id="userMenu" data-bs-toggle="dropdown" aria-expanded="false">
                 <div class="avatar-placeholder">
                     {{ strtoupper(substr(Auth::user()->name, 0, 2)) }}
@@ -239,7 +133,7 @@
                     </div>
                 </li>
             </ul>
-        </div>
+        </div> -->
     </div>
 
     <!-- STATS CARDS -->

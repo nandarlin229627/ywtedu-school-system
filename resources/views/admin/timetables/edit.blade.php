@@ -7,12 +7,12 @@
     <div class="d-flex justify-content-between mb-4">
         <h3 class="fw-bold">✏️ Edit Timetable</h3>
 
-        <a href="{{ route('timetables.index') }}" class="btn btn-light">
+        <a href="{{ route('admin.timetables.index') }}" class="btn btn-light">
             Back
         </a>
     </div>
 
-    <form action="{{ route('timetables.update', $timetable->id) }}" method="POST">
+    <form action="{{ route('admin.timetables.update', $timetable->id) }}" method="POST">
         @csrf
         @method('PUT')
 
